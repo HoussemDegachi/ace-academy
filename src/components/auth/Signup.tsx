@@ -9,7 +9,7 @@ import PasswordInput from "./PasswordInput";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import Modal from "../Modal";
 import { Class } from "@/types/class";
-import axios, { AxiosError, AxiosResponse } from "axios"
+import axios, { AxiosResponse } from "axios"
 import { useToast } from "../ui/use-toast";
 import { useAuth } from "@/assets/contexts/AuthProvider";
 
@@ -82,7 +82,7 @@ function Signup({ openSignup, setOpenSignup }: signupProps) {
         title: "نجاح",
         description: "تم إنشاء حسابك بنجاح"
       })
-    }).catch((err: Any) => {
+    }).catch((err: any) => {
       console.log(err)
       toast({
         title: "فشل إنشاء الحساب",
