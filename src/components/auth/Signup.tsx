@@ -82,7 +82,7 @@ function Signup({ openSignup, setOpenSignup }: signupProps) {
         title: "نجاح",
         description: "تم إنشاء حسابك بنجاح"
       })
-    }).catch((err: AxiosError) => {
+    }).catch((err: Any) => {
       console.log(err)
       toast({
         title: "فشل إنشاء الحساب",
