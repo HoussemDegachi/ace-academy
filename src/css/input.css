@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap');
+  
+@layer {
+  html {
+    @apply motion-safe:scroll-smooth;
+  }
+
+  html, body {
+    font-family: "Alexandria", sans-serif;
+    @apply box-border;
+  }
+  
+  .container 
+  {
+    @apply py-10 px-8;
+  }
+
+}
