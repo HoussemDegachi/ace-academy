@@ -1,4 +1,4 @@
-export type User = {
+export type UserData = {
     history: {
         exercises: string[],
         courses: string[]

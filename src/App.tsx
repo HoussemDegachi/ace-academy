@@ -1,47 +1,52 @@
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom"
-import "./css/output.css"
-import Home from "@/pages/home/index"
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import "./css/output.css";
+import Home from "@/pages/home/index";
 import { useEffect } from "react";
-import { useAuth } from "./assets/contexts/AuthProvider";
-import { useUser } from "./assets/contexts/UserProvider";
+import { useAuth } from "./contexts/AuthProvider";
+import { useUser } from "./contexts/UserProvider";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { User } from "./types/user";
+import { UserData } from "./types/user";
 import { Toaster } from "./components/ui/toaster";
+import MainLayout from "./components/layouts/MainLayout";
+import Subjects from "@/pages/subjects/index"
 
 function App() {
   const serverBase = import.meta.env.VITE_SERVER_URL;
-  const { token, logout } = useAuth()
-  const { setUser, setLoadingUser } = useUser()
+  const { token, logout } = useAuth();
+  const { setUser, setLoadingUser } = useUser();
 
   useEffect(() => {
     if (!token) {
-      setUser(null)
-      setLoadingUser(false)
-      return
+      setUser(null);
+      setLoadingUser(false);
+      return;
     }
 
-    axios.get(`${serverBase}/user`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      }
-    }).then((res: AxiosResponse) => res.data)
-    .then((data: {data: User}) => setUser(data.data))
-    .catch((res: AxiosError) => {
-      console.log(res.response?.status)
-      if (res.response?.status == 401) logout()
-    })
-    .finally(() => setLoadingUser(false))
-  }, [])
+    axios
+      .get(`${serverBase}/user`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res: AxiosResponse) => res.data)
+      .then((data: { data: UserData }) => setUser(data.data))
+      .catch((res: AxiosError) => {
+        console.log(res.response?.status);
+        if (res.response?.status == 401) logout();
+      })
+      .finally(() => setLoadingUser(false));
+  }, []);
 
   return (
     <Router>
       <Toaster />
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/subjects" element={<MainLayout><Subjects /></MainLayout>} />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

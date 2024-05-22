@@ -25,6 +25,9 @@ module.exports = {
       sm: "16px",
     },
     extend: {
+      screens: {
+        "xs": "450px"
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react"
+import { useUser } from "./UserProvider"
 
 type AuthProviderProps = {
   children: React.ReactNode
@@ -22,6 +23,7 @@ export const useAuth = () => useContext(AuthContext)
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [token, setToken] = useState<string|null>(localStorage.getItem("userToken")||null)
+  const {setUser} = useUser()
 
   const login = (userToken: string) => {
     localStorage.setItem("userToken", userToken)
@@ -31,6 +33,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const logout = () => {
     localStorage.removeItem("userToken")
     setToken(null)
+    setUser(null)
   }
  
   return (

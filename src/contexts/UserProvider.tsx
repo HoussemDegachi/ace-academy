@@ -1,4 +1,4 @@
-import { User } from "@/types/user"
+import { UserData } from "@/types/user"
 import React, { Dispatch, SetStateAction, createContext, useContext, useState } from "react"
 
 type UserProviderProps = {
@@ -6,8 +6,8 @@ type UserProviderProps = {
 }
 
 type AuthContextTypes = {
-  user: User|null,
-  setUser: Dispatch<SetStateAction<User|null>>,
+  user: UserData|null,
+  setUser: Dispatch<SetStateAction<UserData|null>>,
   loadingUser: boolean,
   setLoadingUser: Dispatch<SetStateAction<boolean>>
 }
@@ -23,7 +23,7 @@ const UserContext = createContext<AuthContextTypes>(initialContext)
 export const useUser = () => useContext(UserContext)
 
 export function UserProvider({ children }: UserProviderProps) {
-    const [user, setUser] = useState<User|null>(null)
+    const [user, setUser] = useState<UserData|null>(null)
     const [loadingUser, setLoadingUser] = useState<boolean>(true)
 
   return (
