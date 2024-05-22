@@ -9,6 +9,7 @@ import { UserData } from "./types/user";
 import { Toaster } from "./components/ui/toaster";
 import MainLayout from "./components/layouts/MainLayout";
 import Subjects from "@/pages/subjects/index"
+import Subject from "@/pages/subject/index";
 
 function App() {
   const serverBase = import.meta.env.VITE_SERVER_URL;
@@ -44,6 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/subjects" element={<MainLayout><Subjects /></MainLayout>} />
+        <Route path="/subjects/:subjectId" element={<MainLayout><Subject /></MainLayout>} />
       </Routes>
     </Router>
   );

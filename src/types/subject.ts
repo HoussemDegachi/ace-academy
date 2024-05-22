@@ -1,3 +1,5 @@
+import { ChapterData } from "./chapter"
+
 export type SubjectData = {
     logo: {
         filename: string,
@@ -5,5 +7,5 @@ export type SubjectData = {
     },
     _id: string,
     name: string,
-    chapters: string[]
+    chapters: ChapterData[]
 }
