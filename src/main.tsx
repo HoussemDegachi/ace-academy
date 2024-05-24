@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { AuthProvider } from "./contexts/AuthProvider.tsx";
 import { UserProvider } from "./contexts/UserProvider.tsx";
+import { Analytics } from '@vercel/analytics/react';
 import * as Sentry from "@sentry/react";
 
 Sentry.init({
@@ -22,6 +23,7 @@ Sentry.init({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <AuthProvider>
     <UserProvider>
+      <Analytics />
       <App />
     </UserProvider>
   </AuthProvider>
