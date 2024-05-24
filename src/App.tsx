@@ -12,6 +12,7 @@ import Subjects from "@/pages/subjects/index"
 import Subject from "@/pages/subject/index";
 import Practice from "@/pages/practice/index"
 import NotFound from "./pages/NotFound";
+import * as Sentry from "@sentry/react";
 
 function App() {
   const serverBase = import.meta.env.VITE_SERVER_URL;
@@ -54,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+export default Sentry.withProfiler(App);
