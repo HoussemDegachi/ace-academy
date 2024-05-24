@@ -1,3 +1,5 @@
+import { ExerciseData } from "./exercise"
+
 export type ChapterData = {
     course: {
         video: {
@@ -10,5 +12,5 @@ export type ChapterData = {
     name: string,
     trimester: number,
     order: number,
-    exercises: string[]
+    exercises: ExerciseData[]
 }
