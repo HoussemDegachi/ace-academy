@@ -10,6 +10,7 @@ import { Toaster } from "./components/ui/toaster";
 import MainLayout from "./components/layouts/MainLayout";
 import Subjects from "@/pages/subjects/index"
 import Subject from "@/pages/subject/index";
+import Practice from "@/pages/practice/index"
 
 function App() {
   const serverBase = import.meta.env.VITE_SERVER_URL;
@@ -37,7 +38,7 @@ function App() {
         if (res.response?.status == 401) logout();
       })
       .finally(() => setLoadingUser(false));
-  }, []);
+  }, [token]);
 
   return (
     <Router>
@@ -46,6 +47,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/subjects" element={<MainLayout><Subjects /></MainLayout>} />
         <Route path="/subjects/:subjectId" element={<MainLayout><Subject /></MainLayout>} />
+        <Route path="/practice/:chapterId" element={<Practice />} />
       </Routes>
     </Router>
   );

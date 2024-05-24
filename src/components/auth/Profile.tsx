@@ -29,6 +29,7 @@ function Profile({className=""}: ProfileProps) {
         <div className="">
           <p className="font-bold text-[16px]">{user?.userName}</p>
           <p className=" text-[14px] text-neutral-500">{user?.email}</p>
+          <p className=" text-[14px] text-neutral-500">{user?.xp.toFixed()} xp</p>
         </div>
     </div>
     <div className="mt-6">

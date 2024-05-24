@@ -7,6 +7,7 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ChapterSection from "./ChapterSection";
+import LoadingSpinnerIcon from "@/assets/icons/loadingSpinner.svg"
 
 
 function index() {
@@ -46,7 +47,7 @@ function index() {
   }, []);
 
   return (
-    loading ? "loading" : subject ? (
+    loading ? <div className="w-full flex items-center justify-center min-h-screen"><img src={LoadingSpinnerIcon} className={"w-10"} /> </div>: subject ? (
       <>
         <SectionNav title={subject.name} to="/subjects" />
         <div className="py-6">

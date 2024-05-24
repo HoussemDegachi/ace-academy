@@ -1,7 +1,9 @@
+import { CourseData } from "./course"
+
 export type UserData = {
     history: {
         exercises: string[],
-        courses: string[]
+        courses: CourseData[]
     },
     xp: number,
     _id: string,
