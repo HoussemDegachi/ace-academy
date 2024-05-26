@@ -1,12 +1,9 @@
+import { ChapterVideoData } from "./chapterVideo"
 import { ExerciseData } from "./exercise"
 
 export type ChapterData = {
     course: {
-        video: {
-            yId: string,
-            link: string,
-            duration: number
-        }
+        videos: ChapterVideoData[]
     },
     _id: string,
     name: string,
