@@ -6,13 +6,13 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import LoadingSpinnerIcon from "@/assets/icons/loadingSpinner.svg"
-import Course from "./Course";
 import { ExerciseData } from "@/types/exercise";
 import Exercise from "./Exercise";
 import ExitModal from "./ExitModal";
 import { UserData } from "@/types/user";
 import { useUser } from "@/contexts/UserProvider";
 import Award from "./Award";
+import Courses from "./Courses";
 
 type HistoryData = {
   chapterId: string,
@@ -146,7 +146,7 @@ function index() {
       <div className="w-full flex flex-col items-center justify-center">
       {
         loading ? <img src={LoadingSpinnerIcon} className="w-10" /> : (
-          isCourse && courseData ? <Course video={courseData.course.video.link} onFinish={() => updateExercise()} /> : !isCourse && exercise ? <Exercise exercise={exercise.image.url} onFinish={() => updateExercise()} /> : "error"
+          isCourse && courseData ? <Courses videos={courseData.course.videos} onFinish={() => updateExercise()} /> : !isCourse && exercise ? <Exercise exercise={exercise.image.url} onFinish={() => updateExercise()} /> : "error"
         )
       }
       </div>
