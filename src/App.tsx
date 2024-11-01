@@ -14,6 +14,7 @@ import Practice from "@/pages/practice/index"
 import NotFound from "./pages/NotFound";
 import * as Sentry from "@sentry/react";
 import ForgetPassword from "./pages/auth/ForgetPassword";
+import ResetCodeVerification from "./pages/auth/ResetCodeVerification";
 
 function App() {
   const serverBase = import.meta.env.VITE_SERVER_URL;
@@ -48,6 +49,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/reset" element={<ForgetPassword />} />
+        <Route path="/reset/:resetCode" element={<ResetCodeVerification/>} />
         <Route path="/subjects" element={<MainLayout><Subjects /></MainLayout>} />
         <Route path="/subjects/:subjectId" element={<MainLayout><Subject /></MainLayout>} />
         <Route path="/practice/:chapterId" element={<Practice />} />

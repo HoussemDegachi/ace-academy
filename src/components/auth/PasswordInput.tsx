@@ -21,7 +21,13 @@ type PasswordInputProps = {
           password: string;
         },
         "password"
-      >;
+      >
+      | ControllerRenderProps<
+        {
+          password: string
+        },
+        "password"
+      >
 };
 
 function PasswordInput({ field }: PasswordInputProps) {
