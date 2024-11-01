@@ -17,6 +17,7 @@ import PasswordInput from "./PasswordInput";
 import { Button } from "../ui/button";
 import axios, { AxiosResponse } from "axios";
 import { useAuth } from "@/contexts/AuthProvider";
+import { Link } from "react-router-dom";
 
 type signinProps = {
   openSignin: boolean;
@@ -29,8 +30,7 @@ function Signin({ openSignin, setOpenSignin }: signinProps) {
   const { login } = useAuth();
 
   const formSchema = z.object({
-    email: z
-      .string({ message: "هذا المجال فارغ" })
+    email: z.string({ message: "هذا المجال فارغ" })
       .email({ message: "هذا البريد غير صالح" }),
     password: z.string({ message: "هذا المجال فارغ" }).min(8, {
       message: "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
@@ -116,6 +116,7 @@ function Signin({ openSignin, setOpenSignin }: signinProps) {
                 </FormItem>
               )}
             />
+            <Link to="/reset" className="text-light text-xs mt-2">نسيت كلمة المرور</Link>
           </div>
           <Button
             type="submit"
